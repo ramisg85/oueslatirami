@@ -2812,7 +2812,7 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>56587d2849963</argument>
+            <argument>565afa0e36d9c</argument>
           </service>
         </argument>
         <argument type="service">
@@ -2826,7 +2826,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>56587d2849963</argument>
+            <argument>565afa0e36d9c</argument>
           </service>
         </argument>
       </argument>
@@ -3007,7 +3007,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>56587d2849963</argument>
+            <argument>565afa0e36d9c</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -3135,7 +3135,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>56587d2849963</argument>
+            <argument>565afa0e36d9c</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>

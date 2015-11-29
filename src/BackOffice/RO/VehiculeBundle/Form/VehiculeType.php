@@ -11,8 +11,7 @@ class VehiculeType extends AbstractType {
     public $vehicule;
     public $router;
     
-    public function __construct(Vehicule $vehicule = null,Router $router = null) {
-        $this->vehicule = $vehicule;
+    public function __construct(Router $router = null) {
         $this->router = $router;
     }
 

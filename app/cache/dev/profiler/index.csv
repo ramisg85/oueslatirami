@@ -121,3 +121,4 @@ e2e098,127.0.0.1,POST,http://oueslatirami.dev/web/app_dev.php/connexion_utilisat
 edb4ca,127.0.0.1,GET,http://oueslatirami.dev/web/app_dev.php/fr/admin/lister_utilisateur,1448798608,
 5b2fa2,127.0.0.1,GET,http://oueslatirami.dev/web/app_dev.php/fr/admin/lister_vehicule,1448798617,
 f345de,127.0.0.1,GET,http://oueslatirami.dev/web/app_dev.php/fr/admin/add_vehicule,1448800792,
+e2524f,127.0.0.1,GET,http://oueslatirami.dev/web/app_dev.php/fr/admin/add_vehicule,1448802833,
