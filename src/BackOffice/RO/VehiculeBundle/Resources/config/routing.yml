@@ -27,3 +27,5 @@ ro_vehicule_detail:
 ro_vehicule_remplir_modele:
     path:     /admin/remplir_modele
     defaults: { _controller: ROVehiculeBundle:vehicule:remplir_modele }
+    options:
+        expose: true

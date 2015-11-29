@@ -21,6 +21,7 @@
       <parameter key="WhiteOctoberPagerfantaBundle">WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle</parameter>
       <parameter key="BraincraftedBootstrapBundle">Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle</parameter>
       <parameter key="VichUploaderBundle">Vich\UploaderBundle\VichUploaderBundle</parameter>
+      <parameter key="FOSJsRoutingBundle">FOS\JsRoutingBundle\FOSJsRoutingBundle</parameter>
       <parameter key="ROUtilisateurBundle">BackOffice\RO\UtilisateurBundle\ROUtilisateurBundle</parameter>
       <parameter key="ROAgenceBundle">BackOffice\RO\AgenceBundle\ROAgenceBundle</parameter>
       <parameter key="ROVehiculeBundle">BackOffice\RO\VehiculeBundle\ROVehiculeBundle</parameter>
@@ -666,6 +667,11 @@
     <parameter key="vich_uploader.default_filename_attribute_suffix">_name</parameter>
     <parameter key="vich_uploader.mappings" type="collection"/>
     <parameter key="vich_uploader.file_injector.class">Vich\UploaderBundle\Injector\FileInjector</parameter>
+    <parameter key="fos_js_routing.extractor.class">FOS\JsRoutingBundle\Extractor\ExposedRoutesExtractor</parameter>
+    <parameter key="fos_js_routing.controller.class">FOS\JsRoutingBundle\Controller\Controller</parameter>
+    <parameter key="fos_js_routing.cache_control" type="collection">
+      <parameter key="enabled">false</parameter>
+    </parameter>
     <parameter key="nomclass">BackOffice\RO\UtilisateurBundle\Authentication\Handler\LoginSuccessHandler</parameter>
     <parameter key="web_profiler.controller.profiler.class">Symfony\Bundle\WebProfilerBundle\Controller\ProfilerController</parameter>
     <parameter key="web_profiler.controller.router.class">Symfony\Bundle\WebProfilerBundle\Controller\RouterController</parameter>
@@ -2812,7 +2818,7 @@
       <argument type="collection">
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>565afa0e36d9c</argument>
+            <argument>565b613d3e5c5</argument>
           </service>
         </argument>
         <argument type="service">
@@ -2826,7 +2832,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>565afa0e36d9c</argument>
+            <argument>565b613d3e5c5</argument>
           </service>
         </argument>
       </argument>
@@ -3007,7 +3013,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>565afa0e36d9c</argument>
+            <argument>565b613d3e5c5</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -3135,7 +3141,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>565afa0e36d9c</argument>
+            <argument>565b613d3e5c5</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -4368,6 +4374,64 @@
       <argument type="service" id="vich_uploader.storage.file_system"/>
       <argument type="service" id="vich_uploader.upload_handler"/>
       <argument type="service" id="translator"/>
+    </service>
+    <service id="fos_js_routing.extractor" class="FOS\JsRoutingBundle\Extractor\ExposedRoutesExtractor">
+      <argument type="service" id="router"/>
+      <argument type="collection"/>
+      <argument>C:\xampp\htdocs\oueslatirami\app\cache\dev</argument>
+      <argument type="collection">
+        <argument key="FrameworkBundle">Symfony\Bundle\FrameworkBundle\FrameworkBundle</argument>
+        <argument key="SecurityBundle">Symfony\Bundle\SecurityBundle\SecurityBundle</argument>
+        <argument key="TwigBundle">Symfony\Bundle\TwigBundle\TwigBundle</argument>
+        <argument key="MonologBundle">Symfony\Bundle\MonologBundle\MonologBundle</argument>
+        <argument key="SwiftmailerBundle">Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle</argument>
+        <argument key="AsseticBundle">Symfony\Bundle\AsseticBundle\AsseticBundle</argument>
+        <argument key="DoctrineBundle">Doctrine\Bundle\DoctrineBundle\DoctrineBundle</argument>
+        <argument key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</argument>
+        <argument key="AppBundle">AppBundle\AppBundle</argument>
+        <argument key="APYDataGridBundle">APY\DataGridBundle\APYDataGridBundle</argument>
+        <argument key="WhiteOctoberPagerfantaBundle">WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle</argument>
+        <argument key="BraincraftedBootstrapBundle">Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle</argument>
+        <argument key="VichUploaderBundle">Vich\UploaderBundle\VichUploaderBundle</argument>
+        <argument key="FOSJsRoutingBundle">FOS\JsRoutingBundle\FOSJsRoutingBundle</argument>
+        <argument key="ROUtilisateurBundle">BackOffice\RO\UtilisateurBundle\ROUtilisateurBundle</argument>
+        <argument key="ROAgenceBundle">BackOffice\RO\AgenceBundle\ROAgenceBundle</argument>
+        <argument key="ROVehiculeBundle">BackOffice\RO\VehiculeBundle\ROVehiculeBundle</argument>
+        <argument key="ROEquipementBundle">BackOffice\RO\EquipementBundle\ROEquipementBundle</argument>
+        <argument key="ROModeleBundle">BackOffice\RO\ModeleBundle\ROModeleBundle</argument>
+        <argument key="ROMarqueBundle">BackOffice\RO\MarqueBundle\ROMarqueBundle</argument>
+        <argument key="ROCategorieBundle">BackOffice\RO\CategorieBundle\ROCategorieBundle</argument>
+        <argument key="ROEntrepriseBundle">BackOffice\RO\EntrepriseBundle\ROEntrepriseBundle</argument>
+        <argument key="ROClientBundle">BackOffice\RO\ClientBundle\ROClientBundle</argument>
+        <argument key="ROContratBundle">BackOffice\RO\ContratBundle\ROContratBundle</argument>
+        <argument key="ROFactureBundle">BackOffice\RO\FactureBundle\ROFactureBundle</argument>
+        <argument key="ROReservationBundle">BackOffice\RO\ReservationBundle\ROReservationBundle</argument>
+        <argument key="ROFrontBundle">FrontOffice\RO\FrontBundle\ROFrontBundle</argument>
+        <argument key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</argument>
+        <argument key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</argument>
+        <argument key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</argument>
+        <argument key="SensioGeneratorBundle">Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle</argument>
+      </argument>
+    </service>
+    <service id="fos_js_routing.controller" class="FOS\JsRoutingBundle\Controller\Controller">
+      <argument type="service" id="fos_js_routing.serializer"/>
+      <argument type="service" id="fos_js_routing.extractor"/>
+      <argument type="collection">
+        <argument key="enabled">false</argument>
+      </argument>
+      <argument>true</argument>
+    </service>
+    <service id="fos_js_routing.serializer" class="Symfony\Component\Serializer\Serializer">
+      <argument type="collection">
+        <argument type="service">
+          <service class="Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer" public="false"/>
+        </argument>
+      </argument>
+      <argument type="collection">
+        <argument key="json" type="service">
+          <service class="Symfony\Component\Serializer\Encoder\JsonEncoder" public="false"/>
+        </argument>
+      </argument>
     </service>
     <service id="login_success_handler" class="BackOffice\RO\UtilisateurBundle\Authentication\Handler\LoginSuccessHandler">
       <tag name="monolog.logger" channel="security"/>

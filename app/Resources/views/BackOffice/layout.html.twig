@@ -236,8 +236,11 @@
                                 <script src="{{ asset('backoffice/js_datepicker/bootstrap-datepicker.en.js') }}" ></script>
                                 <script src="{{ asset('backoffice/js_datepicker/conf_datepicker.js') }}"></script>
 
+                                <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+                                <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+
                                 {#Surcharge du block javascript pour insérer les js par bundle #}
-                                {% block javascript %}{% endblock %}
-                            </div><!--/.fluid-container-->
-                            </body>
-                            </html>
+                            {% block javascript %}{% endblock %}
+                        </div><!--/.fluid-container-->
+                        </body>
+                        </html>

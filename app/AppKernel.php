@@ -20,6 +20,7 @@ class AppKernel extends Kernel {
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             
             new BackOffice\RO\UtilisateurBundle\ROUtilisateurBundle(),
             new BackOffice\RO\AgenceBundle\ROAgenceBundle(),

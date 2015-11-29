@@ -5,7 +5,7 @@
  */
 function chargerModele(idMarque)
 {
-    var url = "{{ path('ro_vehicule_remplir_modele') }}";
+    var url = Routing.generate('ro_vehicule_remplir_modele');
     var modele = 'ro_vehicule_vehiculetype_modele';
     alert(url);
 

@@ -20,6 +20,7 @@ return array(
     'Metadata\\' => array($vendorDir . '/jms/metadata/src'),
     'Knp\\Menu\\' => array($vendorDir . '/knplabs/knp-menu/src'),
     'Knp\\Component' => array($vendorDir . '/knplabs/knp-components/src'),
+    'JsonpCallbackValidator' => array($vendorDir . '/willdurand/jsonp-callback-validator/src'),
     'Incenteev\\ParameterHandler' => array($vendorDir . '/incenteev/composer-parameter-handler'),
     'Gaufrette' => array($vendorDir . '/knplabs/gaufrette/src'),
     'Doctrine\\ORM\\' => array($vendorDir . '/doctrine/orm/lib'),
