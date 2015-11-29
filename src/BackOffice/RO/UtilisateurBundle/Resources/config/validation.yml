@@ -1,0 +1,39 @@
+## YAML Template.
+---
+BackOffice\RO\UtilisateurBundle\Entity\Utilisateur:
+    properties:
+        email_utilisateur:
+            - NotBlank: { message: "L'adresse mail est obligatoire" }
+            - Email:
+                message: Adresse mail {{ value }} n'est pas un email valide.
+                ##checkMX: true
+            - Length:
+                min: 2
+                max: 255
+                minMessage: "Votre adresse mail doit faire au moins {{ limit }} caractères"
+                maxMessage: "Votre adresse mail ne peut pas être plus long que {{ limit }} caractères"
+        dt_naissance_utilisateur:
+            - NotBlank: { message: "La date de naissance utilisateur est obligatoire" }
+            - Date:
+                message: "Date de naissance invalide."
+        nom_utilisateur:
+            - NotBlank: { message: "Le nom d'utilisateur est obligatoire" }
+            - Length:
+                min: 2
+                max: 250
+                minMessage: "Votre nom doit faire au moins {{ limit }} caractères"
+                maxMessage: "Votre nom ne peut pas être plus long que {{ limit }} caractères"
+        login_utilisateur:
+            - NotBlank: { message: "Le login est obligatoire" }
+            - Length:
+                min: 2
+                max: 50
+                minMessage: "Votre login doit faire au moins {{ limit }} caractères"
+                maxMessage: "Votre login ne peut pas être plus long que {{ limit }} caractères"
+        mdp_utilisateur:
+            - NotBlank: { message: "L'adresse mail est obligatoire" }
+            - Length:
+                min: 2
+                max: 50
+                minMessage: "Votre mot de passe doit faire au moins {{ limit }} caractères"
+                maxMessage: "Votre mot de passe ne peut pas être plus long que {{ limit }} caractères"

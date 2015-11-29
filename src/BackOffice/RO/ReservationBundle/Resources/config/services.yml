@@ -1,0 +1,4 @@
+services:
+#    reservation.example:
+#        class: BackOffice\RO\ReservationBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

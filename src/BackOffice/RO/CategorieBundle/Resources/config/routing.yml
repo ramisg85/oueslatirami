@@ -1,0 +1,25 @@
+ro_categorie_homepage:
+    path:     /{_locale}/admin/lister_categorie
+    defaults: { _controller: ROCategorieBundle:categorie:lister_categorie }
+
+ro_categorie_add:
+    path:     /{_locale}/admin/add_categorie
+    defaults: { _controller: ROCategorieBundle:categorie:add_categorie }
+
+ro_categorie_edit:
+    path:     /{_locale}/admin/edit_categorie/{id}
+    defaults: { _controller: ROCategorieBundle:categorie:edit_categorie }
+    requirements:
+        id: \d+
+
+ro_categorie_delete:
+    path:     /{_locale}/admin/delete_categorie/{id}
+    defaults: { _controller: ROCategorieBundle:categorie:delete_categorie }
+    requirements:
+        id: \d+
+
+ro_categorie_detail:
+    path:     /{_locale}/admin/detail_categorie/{id}
+    defaults: { _controller: ROCategorieBundle:categorie:detail_categorie }
+    requirements:
+        id: \d+

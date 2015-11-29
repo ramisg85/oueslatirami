@@ -1,0 +1,12 @@
+{# empty Twig template #}
+{% if routeButtom is defined and nomButtom is defined %}
+    <div class="row">
+        <div class="col-xs-12 col-md-12" {% if align is defined %} align="{{ align }}" {% endif %} ><br />
+            <a class="btn btn-primary" href="{{ routeButtom }}">
+                <i {% if glyphicon is defined %} class="{{ glyphicon }}" {% endif %} ></i>
+                {{ nomButtom }}
+            </a>
+        </div>
+    </div>
+    <br />
+{% endif %}

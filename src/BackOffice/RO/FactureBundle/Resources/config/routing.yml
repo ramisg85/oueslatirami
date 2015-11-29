@@ -1,0 +1,25 @@
+ro_facture_homepage:
+    path:     /{_locale}/admin/lister_facture
+    defaults: { _controller: ROFactureBundle:facture:lister_facture }
+
+ro_facture_add:
+    path:     /{_locale}/admin/add_facture
+    defaults: { _controller: ROFactureBundle:facture:add_facture }
+
+ro_facture_edit:
+    path:     /{_locale}/admin/edit_facture/{id}
+    defaults: { _controller: ROFactureBundle:facture:edit_facture }
+    requirements:
+        id: \d+
+
+ro_facture_delete:
+    path:     /{_locale}/admin/delete_facture/{id}
+    defaults: { _controller: ROFactureBundle:facture:delete_facture }
+    requirements:
+        id: \d+
+
+ro_facture_detail:
+    path:     /{_locale}/admin/detail_facture/{id}
+    defaults: { _controller: ROFactureBundle:facture:detail_facture }
+    requirements:
+        id: \d+

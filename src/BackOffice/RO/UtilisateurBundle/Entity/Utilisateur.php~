@@ -1,0 +1,291 @@
+<?php
+
+namespace BackOffice\RO\UtilisateurBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use APY\DataGridBundle\Grid\Mapping as GRID;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * BackOffice\RO\UtilisateurBundle\Entity\utilisateur
+ *
+ * @ORM\Table(name="utilisateur")
+ * @ORM\Entity(repositoryClass="BackOffice\RO\UtilisateurBundle\Entity\utilisateurRepository")
+ * 
+ * @GRID\Source(columns="id, nom_utilisateur, prenom_utilisateur, email_utilisateur, roles.nom_role")
+ */
+class Utilisateur implements AdvancedUserInterface, \Serializable {
+
+    /**
+     * @var integer
+     * @GRID\Column(visible=false)
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    //Definition des metadonnées
+    /**
+     * @ORM\ManyToMany(targetEntity="Role", inversedBy="utilisateurs")
+     * @GRID\Column(field="roles.nom_role", title="Roles associés", joinType="left", operatorsVisible=false)
+     * @ORM\JoinTable(name="utilisateur_role")
+     */
+    private $roles;
+
+    /**
+     * @ORM\Column(name="nom_utilisateur", type="string", length=255, unique=true)
+     * @Assert\NotBlank(message="Nom utilisateur obligatoire")
+     * @GRID\Column(title="Prénom", size="255", type="text", operatorsVisible=false)
+     * @Assert\Length(
+     *      min = "5",
+     *      max = "150",
+     *      minMessage = "Le nom utilisateur doit contenir au moin {{ limit }} caractères.",
+     *      maxMessage = "Le nom utilisateur doit pas être plus long que {{ limit }} caractères"
+     * )
+     */
+    protected $nom_utilisateur;
+
+    /**
+     * @ORM\Column(name="prenom_utilisateur", type="string", length=255, unique=true)
+     * @Assert\NotBlank(message="Prénom utilisateur obligatoire")
+     * @GRID\Column(title="Nom", size="255", type="text", operatorsVisible=false)
+     * @Assert\Length(
+     *      min = "5",
+     *      max = "150",
+     *      minMessage = "Le prénom utilisateur doit contenir au moin {{ limit }} caractères.",
+     *      maxMessage = "Le prénom utilisateur doit pas être plus long que {{ limit }} caractères"
+     * )
+     */
+    protected $prenom_utilisateur;
+
+    /**
+     * @ORM\Column(name="email_utilisateur", type="string", length=255, nullable=false)
+     * @GRID\Column(title="Mail", size="255", type="text", operatorsVisible=false)
+     * @Assert\NotBlank()
+     * @Assert\Email()
+     */
+    protected $email_utilisateur;
+
+    /**
+     * @ORM\Column(name="login_utilisateur", type="string", length=255, unique=true)
+     * @Assert\NotBlank(message="Login utilisateur obligatoire")
+     * 
+     * @Assert\Length(
+     *      min = "5",
+     *      max = "150",
+     *      minMessage = "Le login utilisateur doit contenir au moin {{ limit }} caractères.",
+     *      maxMessage = "Le login utilisateur doit pas être plus long que {{ limit }} caractères"
+     * )
+     */
+    protected $login_utilisateur;
+
+    /**
+     * @ORM\Column(name="salt", type="string", length=32)
+     */
+    private $salt;
+
+    /**
+     * @ORM\Column(name="mdp_utilisateur", type="string", length=255)
+     * @Assert\NotBlank(message="Mot de passe utilisateur utilisateur obligatoire")
+     * @Assert\Length(
+     *      min = "5",
+     *      max = "150",
+     *      minMessage = "Le mot de passe utilisateur doit contenir au moin {{ limit }} caractères.",
+     *      maxMessage = "Le mot de passe utilisateur doit pas être plus long que {{ limit }} caractères"
+     * )
+     */
+    protected $mdp_utilisateur;
+
+    /**
+     * @ORM\Column(name="dt_naissance_utilisateur", type="date", length=255, unique=true)
+     * @Assert\Date()
+     * @Assert\Length(min=7)
+     */
+    protected $dt_naissance_utilisateur;
+
+    /**
+     * @ORM\Column(name="actif_utilisateur", type="boolean", nullable=false)
+     */
+    protected $actif_utilisateur;
+
+    //Methode a implementer de l'interface USer interface
+    public function __construct() {
+        $this->actif_utilisateur = true;
+        $this->salt = md5(uniqid(null, true));
+        $this->roles = new ArrayCollection();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getSalt() {
+        return $this->salt;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getRoles() {
+        return $this->roles->toArray();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getUsername() {
+        return $this->login_utilisateur;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getPassword() {
+        return $this->mdp_utilisateur;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function eraseCredentials() {
+        
+    }
+
+    /**
+     * @see \Serializable::serialize()
+     */
+    public function serialize() {
+        return serialize(array(
+            $this->id,
+        ));
+    }
+
+    /**
+     * @see \Serializable::unserialize()
+     */
+    public function unserialize($serialized) {
+        list ($this->id, ) = unserialize($serialized);
+    }
+
+    //Fonction qui retourne si le compte utilisateur est expiré
+    public function isAccountNonExpired() {
+        return true;
+    }
+
+    //Fonction qui retourne si le compte utilisateur est verouillé
+    public function isAccountNonLocked() {
+        return true;
+    }
+
+    //Fonction qui retourne si le compte utilisateur n'est pas expiré
+    public function isCredentialsNonExpired() {
+        return true;
+    }
+
+    //Fonction qui retourne si le compte utilisateur est désactivé
+    public function isEnabled() {
+        return $this->actif_utilisateur;
+    }
+
+    public function getLastname() {
+        return $this->nom_utilisateur;
+    }
+
+    public function getFirstname() {
+        return $this->prenom_utilisateur;
+    }
+
+    //Getteur et setteur des metadonnées de l'entity modele utilisateur
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId() {
+        return $this->id;
+    }
+
+    public function setId($id) {
+        return $this->id = $id;
+    }
+
+    /**
+     * Get nom_utilisateur
+     *
+     * @return string 
+     */
+    public function getNomUtilisateur() {
+        return $this->nom_utilisateur;
+    }
+
+    public function setNomUtilisateur($nom_utilisateur) {
+        return $this->nom_utilisateur = $nom_utilisateur;
+    }
+
+    /**
+     * Get prenom_utilisateur
+     *
+     * @return string 
+     */
+    public function getPreomUtilisateur() {
+        return $this->prenom_utilisateur;
+    }
+
+    public function setPrenomUtilisateur($prenom_utilisateur) {
+        return $this->prenom_utilisateur = $prenom_utilisateur;
+    }
+
+    /**
+     * Get email_utilisateur
+     *
+     * @return string 
+     */
+    public function getEmailUtilisateur() {
+        return $this->email_utilisateur;
+    }
+
+    public function setEmailUtilisateur($email_utilisateur) {
+        return $this->email_utilisateur = $email_utilisateur;
+    }
+
+    /**
+     * Get login_utilisateur
+     *
+     * @return string 
+     */
+    public function getLoginUtilisateur() {
+        return $this->login_utilisateur;
+    }
+
+    public function setLoginUtilisateur($login_utilisateur) {
+        return $this->login_utilisateur = $login_utilisateur;
+    }
+
+    /**
+     * Get mdp_utilisateur
+     *
+     * @return string 
+     */
+    public function getMdpUtilisateur() {
+        return $this->mdp_utilisateur;
+    }
+
+    public function setMdpUtilisateur($mdp_utilisateur) {
+        return $this->mdp_utilisateur = $mdp_utilisateur;
+    }
+
+    /**
+     * Get dt_naissance_utilisateur
+     *
+     * @return date 
+     */
+    public function getDtNaissanceUtilisateur() {
+        return $this->dt_naissance_utilisateur;
+    }
+
+    public function setDtNaissanceUtilisateur($dt_naissance_utilisateur) {
+        return $this->dt_naissance_utilisateur = $dt_naissance_utilisateur;
+    }
+
+}

@@ -1,0 +1,25 @@
+ro_agence_homepage:
+    path:     /{_locale}/admin/lister_agence
+    defaults: { _controller: ROAgenceBundle:agence:lister_agence }
+
+ro_agence_add:
+    path:     /{_locale}/admin/add_agence
+    defaults: { _controller: ROAgenceBundle:agence:add_agence }
+
+ro_agence_edit:
+    path:     /{_locale}/admin/edit_agence/{id}
+    defaults: { _controller: ROAgenceBundle:agence:edit_agence }
+    requirements:
+        id: \d+
+
+ro_agence_delete:
+    path:     /{_locale}/admin/delete_agence/{id}
+    defaults: { _controller: ROAgenceBundle:agence:delete_agence }
+    requirements:
+        id: \d+
+
+ro_agence_detail:
+    path:     /{_locale}/admin/detail_agence/{id}
+    defaults: { _controller: ROAgenceBundle:agence:detail_agence }
+    requirements:
+        id: \d+

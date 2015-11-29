@@ -1,0 +1,29 @@
+ro_vehicule_homepage:
+    path:     /{_locale}/admin/lister_vehicule
+    defaults: { _controller: ROVehiculeBundle:vehicule:lister_vehicule }
+
+ro_vehicule_add:
+    path:     /{_locale}/admin/add_vehicule
+    defaults: { _controller: ROVehiculeBundle:vehicule:add_vehicule }
+
+ro_vehicule_edit:
+    path:     /{_locale}/admin/edit_vehicule/{id}
+    defaults: { _controller: ROVehiculeBundle:vehicule:edit_vehicule }
+    requirements:
+        id: \d+
+
+ro_vehicule_delete:
+    path:     /{_locale}/admin/delete_vehicule/{id}
+    defaults: { _controller: ROVehiculeBundle:vehicule:delete_vehicule }
+    requirements:
+        id: \d+
+
+ro_vehicule_detail:
+    path:     /{_locale}/admin/detail_vehicule/{id}
+    defaults: { _controller: ROVehiculeBundle:vehicule:detail_vehicule }
+    requirements:
+        id: \d+
+        
+ro_vehicule_remplir_modele:
+    path:     /admin/remplir_modele
+    defaults: { _controller: ROVehiculeBundle:vehicule:remplir_modele }

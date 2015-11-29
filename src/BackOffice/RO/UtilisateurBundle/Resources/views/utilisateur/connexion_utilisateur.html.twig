@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Administration gestion de ekri.net</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="ekri.net sit de location de véhicule en ligne pour particuliers et professionels">
+        <meta name="author" content="Muhammad Usman">
+
+        <!-- The styles -->
+        <link id="bs-css" rel="stylesheet" href="{{ asset('backoffice/css/bootstrap.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('backoffice/css/charisma-app.css') }}" type="text/css" />
+        
+        <!-- The fav icon -->
+        <link rel="shortcut icon" href="img/favicon.ico">
+    </head>
+
+    <body>
+        <div class="ch-container">
+            <div class="row">
+
+                <div class="row">
+                    <div class="col-md-12 center login-header">
+                        <h2>Bienvenue dans l'administration ekri.net</h2>
+                    </div>
+                    <!--/span-->
+                </div><!--/row-->
+
+                <div class="row">
+                    <div class="well col-md-5 center login-box">
+                        
+                            {% if error %}
+                                <div class="alert alert-danger" >{{ error.messageKey|trans(error.messageData, 'security') }}<br /></div>
+                            {% else %}
+                                <div  class="alert alert-info">Veillez saisir votre login et mot de passe<br /></div>
+                            {% endif %}
+                        
+                        <form action="{{ path('utilisateur_connexion_check') }}" method="post">
+                            <fieldset>
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user red"></i></span>
+                                    <input type="text" class="form-control" name="_username" id="username" placeholder="Login">
+                                </div>
+                                <div class="clearfix"></div><br>
+
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock red"></i></span>
+                                    <input type="password" class="form-control" name="_password" id="password" placeholder="Mot de passe">
+                                </div>
+                                <div class="clearfix"></div>
+
+                                <p class="center col-md-5">
+                                    <button type="submit" class="btn btn-primary">Connexion</button>
+                                </p>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <!--/span-->
+                </div><!--/row-->
+            </div><!--/fluid-row-->
+
+        </div><!--/.fluid-container-->
+
+    </body>
+</html>

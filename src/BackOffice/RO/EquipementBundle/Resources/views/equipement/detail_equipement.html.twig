@@ -1,0 +1,21 @@
+{% extends ":BackOffice:layout.html.twig" %}
+
+{#Surcharge du titre de la page #}
+{% block title %}Détail équipement{% endblock %}
+{% block body %}
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Equipement</th>
+                <td>{{ entity.nomEquipement }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ entity.descEquipement }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="col-sm-3">{{ include(':BackOffice:buttom.html.twig', {nomButtom : 'Retour listing équipement', routeButtom : path('ro_equipement_homepage'), glyphicon : 'glyphicon glyphicon-arrow-left'}) }}</div>
+    <div class="col-sm-3">{{ include(':BackOffice:buttom.html.twig', {nomButtom : 'Modifier infos équipement', routeButtom : path('ro_equipement_edit', { 'id': entity.id }), glyphicon : 'glyphicon glyphicon-pencil'}) }}</div>
+    <div class="col-sm-3">{{ include(':BackOffice:buttom.html.twig', {nomButtom : 'Supprimer équipement', routeButtom : path('ro_equipement_delete', { 'id': entity.id }), glyphicon : 'glyphicon glyphicon-remove'}) }}</div>
+{% endblock %}

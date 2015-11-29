@@ -1,0 +1,25 @@
+ro_reservation_homepage:
+    path:     /{_locale}/admin/lister_reservation
+    defaults: { _controller: ROReservationBundle:reservation:lister_reservation }
+
+ro_reservation_add:
+    path:     /{_locale}/admin/add_reservation
+    defaults: { _controller: ROReservationBundle:reservation:add_reservation }
+
+ro_reservation_edit:
+    path:     /{_locale}/admin/edit_reservation/{id}
+    defaults: { _controller: ROReservationBundle:reservation:edit_reservation }
+    requirements:
+        id: \d+
+
+ro_reservation_delete:
+    path:     /{_locale}/admin/delete_reservation/{id}
+    defaults: { _controller: ROReservationBundle:reservation:delete_reservation }
+    requirements:
+        id: \d+
+
+ro_reservation_detail:
+    path:     /{_locale}/admin/detail_reservation/{id}
+    defaults: { _controller: ROReservationBundle:reservation:detail_reservation }
+    requirements:
+        id: \d+

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %} | Gestion de cv {% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
+        <meta name="author" content="Oueslati Rami">
+
+        <!-- The styles -->
+        <link rel="stylesheet" href="{{ asset('backoffice/css/bootstrap.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('backoffice/css/charisma-app.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('backoffice/bower_components/chosen/chosen.min.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('backoffice/bower_components/responsive-tables/responsive-tables.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('backoffice/css/elfinder.theme.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('backoffice/css/jquery.iphone.toggle.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('backoffice/css/animate.min.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('backoffice/css/datepicker.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('backoffice/css/flags.css') }}" type="text/css" />
+
+        <!-- The fav icon -->
+        <link rel="shortcut icon" href="{{ asset('backoffice/img/img/favicon.ico') }}">
+    </head>
+
+    <body>
+        <!-- topbar starts -->
+        <div class="navbar navbar-default" role="navigation">
+            <div class="navbar-inner">
+                <button type="button" class="navbar-toggle pull-left animated flip">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <!--<a class="navbar-brand" href="index.html"> <img alt="Charisma Logo" src="{{ asset('backoffice/img/logoAkka.png') }}" class="hidden-xs"/></a>-->
+
+                <div class="pull-right">
+                    <img src="{{ asset('backoffice/img/blank.gif') }}" class="flag flag-fr" alt="Fr" />
+                    <img src="{{ asset('backoffice/img/blank.gif') }}" class="flag flag-gb" alt="En" />
+                </div>
+
+                <!-- user dropdown starts -->
+                <div class="btn-group pull-right">
+                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"> admin</span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Mon profile</a></li>
+                        <li class="divider"></li>
+                        <li><a href="{{ path('utilisateur_deconnexion') }}">Déconnexion</a></li>
+                    </ul>
+                </div>
+                <!-- user dropdown ends -->
+
+                <ul class="collapse navbar-collapse nav navbar-nav top-menu">
+                    <li><a href="#"><i class="glyphicon glyphicon-globe"></i> Bonjour {% if app.user.firstname is defined and app.user.lastname is defined %} {{ app.user.firstname | capitalize | truncate(20, true, '...') }} - {{ app.user.lastname | capitalize | truncate(20, true, '...') }} {% endif %}</a></li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown"><i class="glyphicon glyphicon-star"></i> Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <form class="navbar-search pull-left">
+                            <input placeholder="Search" class="search-query form-control col-md-10" name="query" type="text">
+                        </form>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+        <!-- topbar ends -->
+        <div class="ch-container">
+            <div class="row">
+
+                <!-- left menu starts -->
+                <div class="col-sm-2 col-lg-2">
+                    <div class="sidebar-nav">
+                        <div class="nav-canvas">
+                            <div class="nav-sm nav nav-stacked">
+
+                            </div>
+                            <ul class="nav nav-pills nav-stacked main-menu">
+                                <li class="nav-header">Main</li>
+                                <li><a class="ajax-link" href="index.html"><i class="glyphicon glyphicon-signal"></i><span> Tableau de bord</span></a>
+                                </li>
+                                <li class="accordion">
+                                    <a href="{{ path('ro_utilisateur_homepage') }}"><i class="glyphicon glyphicon-user"></i><span> Utilisateurs</span></a>
+                                    <ul class="nav nav-pills nav-stacked">
+                                        <li><a href="{{ path('ro_utilisateur_add') }}">Ajouter un utilisateur</a></li>
+                                        <li><a href="{{ path('ro_utilisateur_homepage') }}">Listing utilisateur</a></li>
+                                    </ul>
+                                </li>
+                                <li class="accordion">
+                                    <a href="{{ path('ro_agence_homepage') }}"><i class="glyphicon glyphicon-home"></i><span> Agence</span></a>
+                                    <ul class="nav nav-pills nav-stacked">
+                                        <li><a href="{{ path('ro_agence_add') }}">Ajouter une agence</a></li>
+                                        <li><a href="{{ path('ro_agence_homepage') }}">Listing agence</a></li>
+                                    </ul>
+                                </li>
+                                <li class="accordion">
+                                    <a href="{{ path('ro_vehicule_homepage') }}"><i class="glyphicon glyphicon-road"></i><span> Véhicule</span></a>
+                                    <ul class="nav nav-pills nav-stacked">
+                                        <li><a href="{{ path('ro_vehicule_add') }}">Ajouter un véhicule</a></li>
+                                        <li><a href="{{ path('ro_vehicule_homepage') }}">Listing véhicule</a></li>
+                                    </ul>
+                                </li>
+                                <li class="accordion">
+                                    <a href="{{ path('ro_equipement_homepage') }}"><i class="glyphicon glyphicon-th"></i><span> Equipement</span></a>
+                                    <ul class="nav nav-pills nav-stacked">
+                                        <li><a href="{{ path('ro_equipement_add') }}">Ajouter un équipement</a></li>
+                                        <li><a href="{{ path('ro_equipement_homepage') }}">Listing équipement</a></li>
+                                    </ul>
+                                </li>
+                                <li class="accordion">
+                                    <a href="{{ path('ro_categorie_homepage') }}"><i class="glyphicon glyphicon-th-list"></i><span> Catégorie</span></a>
+                                    <ul class="nav nav-pills nav-stacked">
+                                        <li><a href="{{ path('ro_categorie_add') }}">Ajouter une catégorie</a></li>
+                                        <li><a href="{{ path('ro_categorie_homepage') }}">Listing catégorie</a></li>
+                                    </ul>
+                                </li>
+                                <li class="accordion">
+                                    <a href="{{ path('ro_marque_homepage') }}"><i class="glyphicon glyphicon-book"></i><span> Marque</span></a>
+                                    <ul class="nav nav-pills nav-stacked">
+                                        <li><a href="{{ path('ro_marque_add') }}">Ajouter une marque</a></li>
+                                        <li><a href="{{ path('ro_marque_homepage') }}">Listing marque</a></li>
+                                    </ul>
+                                </li>
+                                <li class="accordion">
+                                    <a href="{{ path('ro_modele_homepage') }}"><i class="glyphicon glyphicon-asterisk"></i><span> Modéle</span></a>
+                                    <ul class="nav nav-pills nav-stacked">
+                                        <li><a href="{{ path('ro_modele_add') }}">Ajouter un modéle</a></li>
+                                        <li><a href="{{ path('ro_modele_homepage') }}">Listing modéle</a></li>
+                                    </ul>
+                                </li>
+                                <li class="accordion">
+                                    <a href="{{ path('ro_reservation_homepage') }}"><i class="glyphicon glyphicon-check"></i><span> Réservation</span></a>
+                                    <ul class="nav nav-pills nav-stacked">
+                                        <li><a href="{{ path('ro_reservation_add') }}">Ajouter une réservation</a></li>
+                                        <li><a href="{{ path('ro_reservation_homepage') }}">Listing Réservation</a></li>
+                                    </ul>
+                                </li>
+                                <li class="accordion">
+                                    <a href="{{ path('ro_contrat_homepage') }}"><i class="glyphicon glyphicon-briefcase"></i><span> Contrat</span></a>
+                                    <ul class="nav nav-pills nav-stacked">
+                                        <li><a href="{{ path('ro_contrat_add') }}">Ajouter un contrat</a></li>
+                                        <li><a href="{{ path('ro_contrat_homepage') }}">Listing contrat</a></li>
+                                    </ul>
+                                </li>
+                                <li class="accordion">
+                                    <a href="{{ path('ro_entreprise_homepage') }}"><i class="glyphicon glyphicon-flag"></i><span> Entreprise</span></a>
+                                    <ul class="nav nav-pills nav-stacked">
+                                        <li><a href="{{ path('ro_entreprise_add') }}">Ajouter une entreprise</a></li>
+                                        <li><a href="{{ path('ro_entreprise_homepage') }}">Listing entreprise</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--/span-->
+                <!-- left menu ends -->
+
+                <noscript>
+                <div class="alert alert-block col-md-12">
+                    <h4 class="alert-heading">Attention!</h4>
+
+                    <p>Vous devez avoir <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> activé sur votre navigateur.</p>
+                </div>
+                </noscript>
+
+                <div id="content" class="col-lg-10 col-sm-10">
+                    {% if aff_dashboard is defined and aff_dashboard==1 %}
+                        {{ include("::blocks_dashboard.html.twig") }}
+                    {% endif %}
+                    <div class="row">
+                        <div class="box col-md-12">
+                            <div class="box-inner">
+                                <div class="box-header well">
+                                    <h2><i class="glyphicon glyphicon-info-sign"></i> {{ block('title') }} </h2>
+
+
+                                    <!-- content starts -->
+                                    {% block buttonAdd %}
+                                    {% endblock %}
+
+                                    <div class="box-icon">
+                                        <a href="#" class="btn btn-setting btn-round btn-default"><i
+                                                class="glyphicon glyphicon-cog"></i></a>
+                                        <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                                                class="glyphicon glyphicon-chevron-up"></i></a>
+                                        <a href="#" class="btn btn-close btn-round btn-default"><i
+                                                class="glyphicon glyphicon-remove"></i></a>
+                                    </div>
+                                </div>
+                                <div class="box-content row">
+                                    <div class="col-lg-12 col-md-12">
+                                        {% block body %}
+                                        {% endblock %}
+                                    </div>
+                                </div>         
+
+                                <footer class="row">
+                                    <p class="col-md-9 col-sm-9 col-xs-12 copyright">&copy; Oueslati Rami</p>
+                                    <p class="col-md-3 col-sm-3 col-xs-12 powered-by">Powered by: Oueslati Rami</p>
+                                </footer>
+
+                                <!-- jQuery -->
+                                <script src="{{ asset('backoffice/bower_components/jquery/jquery.min.js') }}"></script>
+
+                                <!-- javascript -->
+                                <script src="{{ asset('backoffice/js/bootstrap.js') }}"></script>
+                                <!-- library for cookie management -->
+                                <script src="{{ asset('backoffice/js/jquery.cookie.js') }}">></script>
+                                <!-- select or dropdown enhancer -->
+                                <script src="{{ asset('backoffice/bower_components/chosen/chosen.jquery.min.js') }}"></script>
+                                <!-- library for making tables responsive -->
+                                <script src="{{ asset('backoffice/bower_components/responsive-tables/responsive-tables.js') }}"></script>
+                                <!-- for iOS style toggle switch -->
+                                <script src="{{ asset('backoffice/js/jquery.iphone.toggle.js') }}"></script>
+                                <!-- autogrowing textarea plugin -->
+                                <script src="{{ asset('backoffice/js/jquery.autogrow-textarea.js') }}"></script>
+                                <!-- application script for Charisma demo -->
+                                <script src="{{ asset('backoffice/js/charisma.js') }}"></script>
+
+                                <!-- application script for bootstrap datepicker -->
+                                <script src="{{ asset('backoffice/js_datepicker/bootstrap-datepicker.js') }}"></script>
+                                <script src="{{ asset('backoffice/js_datepicker/bootstrap-datepicker.en.js') }}" ></script>
+                                <script src="{{ asset('backoffice/js_datepicker/conf_datepicker.js') }}"></script>
+
+                                {#Surcharge du block javascript pour insérer les js par bundle #}
+                                {% block javascript %}{% endblock %}
+                            </div><!--/.fluid-container-->
+                            </body>
+                            </html>

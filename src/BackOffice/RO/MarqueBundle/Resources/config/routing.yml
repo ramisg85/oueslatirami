@@ -1,0 +1,25 @@
+ro_marque_homepage:
+    path:     /{_locale}/admin/lister_marque
+    defaults: { _controller: ROMarqueBundle:marque:lister_marque }
+
+ro_marque_add:
+    path:     /{_locale}/admin/add_marque
+    defaults: { _controller: ROMarqueBundle:marque:add_marque }
+
+ro_marque_edit:
+    path:     /{_locale}/admin/edit_marque/{id}
+    defaults: { _controller: ROMarqueBundle:marque:edit_marque }
+    requirements:
+        id: \d+
+
+ro_marque_delete:
+    path:     /{_locale}/admin/delete_marque/{id}
+    defaults: { _controller: ROMarqueBundle:marque:delete_marque }
+    requirements:
+        id: \d+
+
+ro_marque_detail:
+    path:     /{_locale}/admin/detail_marque/{id}
+    defaults: { _controller: ROMarqueBundle:marque:detail_marque }
+    requirements:
+        id: \d+

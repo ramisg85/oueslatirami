@@ -1,0 +1,25 @@
+{% extends ":BackOffice:layout.html.twig" %}
+
+{#Surcharge du titre de la page #}
+{% block title %}Détail modéle{% endblock %}
+{% block body %}
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Nom</th>
+                <td>{{ entity.denominationModele }}</td>
+            </tr>
+            <tr>
+                <th>Marque</th>
+                <td>{{ entity.marque.nomMarque }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ entity.descModele }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="col-sm-3">{{ include(':BackOffice:buttom.html.twig', {nomButtom : 'Retour listing modéle', routeButtom : path('ro_modele_homepage'), glyphicon : 'glyphicon glyphicon-arrow-left'}) }}</div>
+    <div class="col-sm-3">{{ include(':BackOffice:buttom.html.twig', {nomButtom : 'Modifier infos modéle', routeButtom : path('ro_modele_edit', { 'id': entity.id }), glyphicon : 'glyphicon glyphicon-pencil'}) }}</div>
+    <div class="col-sm-3">{{ include(':BackOffice:buttom.html.twig', {nomButtom : 'Supprimer modéle', routeButtom : path('ro_modele_delete', { 'id': entity.id }), glyphicon : 'glyphicon glyphicon-remove'}) }}</div>
+{% endblock %}

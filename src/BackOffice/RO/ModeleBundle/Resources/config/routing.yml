@@ -1,0 +1,25 @@
+ro_modele_homepage:
+    path:     /{_locale}/admin/lister_modele
+    defaults: { _controller: ROModeleBundle:modele:lister_modele }
+
+ro_modele_add:
+    path:     /{_locale}/admin/add_modele
+    defaults: { _controller: ROModeleBundle:modele:add_modele }
+
+ro_modele_edit:
+    path:     /{_locale}/admin/edit_modele/{id}
+    defaults: { _controller: ROModeleBundle:modele:edit_modele }
+    requirements:
+        id: \d+
+
+ro_modele_delete:
+    path:     /{_locale}/admin/delete_modele/{id}
+    defaults: { _controller: ROModeleBundle:modele:delete_modele }
+    requirements:
+        id: \d+
+
+ro_modele_detail:
+    path:     /{_locale}/admin/detail_modele/{id}
+    defaults: { _controller: ROModeleBundle:modele:detail_modele }
+    requirements:
+        id: \d+

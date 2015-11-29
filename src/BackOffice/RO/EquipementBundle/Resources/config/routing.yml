@@ -1,0 +1,25 @@
+ro_equipement_homepage:
+    path:     /{_locale}/admin/lister_equipement
+    defaults: { _controller: ROEquipementBundle:equipement:lister_equipement }
+
+ro_equipement_add:
+    path:     /{_locale}/admin/add_equipement
+    defaults: { _controller: ROEquipementBundle:equipement:add_equipement }
+
+ro_equipement_edit:
+    path:     /{_locale}/admin/edit_equipement/{id}
+    defaults: { _controller: ROEquipementBundle:equipement:edit_equipement }
+    requirements:
+        id: \d+
+
+ro_equipement_delete:
+    path:     /{_locale}/admin/delete_equipement/{id}
+    defaults: { _controller: ROEquipementBundle:equipement:delete_equipement }
+    requirements:
+        id: \d+
+
+ro_equipement_detail:
+    path:     /{_locale}/admin/detail_equipement/{id}
+    defaults: { _controller: ROEquipementBundle:equipement:detail_equipement }
+    requirements:
+        id: \d+

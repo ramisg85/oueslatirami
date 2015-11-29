@@ -1,0 +1,25 @@
+ro_entreprise_homepage:
+    path:     /{_locale}/admin/lister_entreprise
+    defaults: { _controller: ROEntrepriseBundle:entreprise:lister_entreprise }
+
+ro_entreprise_add:
+    path:     /{_locale}/admin/add_entreprise
+    defaults: { _controller: ROEntrepriseBundle:entreprise:add_entreprise }
+
+ro_entreprise_edit:
+    path:     /{_locale}/admin/edit_entreprise/{id}
+    defaults: { _controller: ROEntrepriseBundle:entreprise:edit_entreprise }
+    requirements:
+        id: \d+
+
+ro_entreprise_delete:
+    path:     /{_locale}/admin/delete_entreprise/{id}
+    defaults: { _controller: ROEntrepriseBundle:entreprise:delete_entreprise }
+    requirements:
+        id: \d+
+
+ro_entreprise_detail:
+    path:     /{_locale}/admin/detail_entreprise/{id}
+    defaults: { _controller: ROEntrepriseBundle:entreprise:detail_entreprise }
+    requirements:
+        id: \d+

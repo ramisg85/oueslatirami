@@ -1,0 +1,4 @@
+services:
+#    marque.example:
+#        class: BackOffice\RO\MarqueBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

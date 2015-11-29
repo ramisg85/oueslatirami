@@ -1,0 +1,9 @@
+parameters:
+    nomClass: BackOffice\RO\UtilisateurBundle\Authentication\Handler\LoginSuccessHandler
+    
+services:
+    login_success_handler :
+        class:  %nomClass%
+        arguments:  [@router, @security.context]
+        tags:
+            - { name: 'monolog.logger', channel: 'security' } 

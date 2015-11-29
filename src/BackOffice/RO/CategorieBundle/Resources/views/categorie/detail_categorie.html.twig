@@ -1,0 +1,17 @@
+{% extends ":BackOffice:layout.html.twig" %}
+
+{#Surcharge du titre de la page #}
+{% block title %}Détail catégorie{% endblock %}
+{% block body %}
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Nom</th>
+                <td>{{ entity.nom_equipement }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="col-sm-3">{{ include(':BackOffice:buttom.html.twig', {nomButtom : 'Retour listing catégorie', routeButtom : path('ro_categorie_homepage'), glyphicon : 'glyphicon glyphicon-arrow-left'}) }}</div>
+    <div class="col-sm-3">{{ include(':BackOffice:buttom.html.twig', {nomButtom : 'Modifier infos catégorie', routeButtom : path('ro_categorie_edit', { 'id': entity.id }), glyphicon : 'glyphicon glyphicon-pencil'}) }}</div>
+    <div class="col-sm-3">{{ include(':BackOffice:buttom.html.twig', {nomButtom : 'Supprimer catégorie', routeButtom : path('ro_categorie_delete', { 'id': entity.id }), glyphicon : 'glyphicon glyphicon-remove'}) }}</div>
+{% endblock %}

@@ -1,0 +1,74 @@
+# you can read more about security in the related section of the documentation
+# http://symfony.com/doc/current/book/security.html
+security:
+    # http://symfony.com/doc/current/book/security.html#encoding-the-user-s-password
+    encoders:
+        BackOffice\RO\UtilisateurBundle\Entity\Utilisateur:
+            algorithm:        sha512
+            encode_as_base64: false
+            iterations:       5000
+            
+    # http://symfony.com/doc/current/book/security.html#hierarchical-roles
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    providers:
+        administrators:
+            entity: { class: ROUtilisateurBundle:Utilisateur:login_utilisateur }
+
+    # the main part of the security, where you can set up firewalls
+    # for specific sections of your app
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        login_firewall:
+            switch_user: true
+            pattern:    ^/admin/login$
+            anonymous:  ~       
+        secured_area:
+            pattern:    ^/
+            anonymous: ~
+            
+            form_login:
+                success_handler: login_success_handler
+                default_target_path: /%locale%/admin/lister_utilisateur
+                
+                login_path:  utilisateur_connexion
+                check_path:  utilisateur_connexion_check
+                
+                # le nom des champs username et password
+                username_parameter: _username
+                password_parameter: _password 
+                
+                provider: administrators
+                #Force la methode de connexion qui doit obligatoirement être du POST
+                post_only: true
+                
+                use_forward:    false
+                failure_path:   null
+                
+                # options de redirection lorsque le login a réussi (vous
+                # pouvez en lire plus ci-dessous)
+                always_use_default_target_path: false
+                default_target_path: /
+                target_path_parameter: _target_path
+                use_referer: false
+                
+            logout:
+                path: utilisateur_deconnexion
+                target: utilisateur_connexion
+            anonymous:  true
+            #http_basic:
+            #    realm: "Secured Demo Area"
+
+    # with these settings you can restrict or allow access for different parts
+    # of your application based on roles, ip, host or methods
+    # http://symfony.com/doc/current/cookbook/security/access_control.html
+    access_control:
+        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        - { path: ^/utilisateur_connexion, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/utilisateur, roles: ROLE_SUPER_ADMIN }

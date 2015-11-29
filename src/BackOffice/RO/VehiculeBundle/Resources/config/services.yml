@@ -1,0 +1,6 @@
+services:
+# Form type
+    ro_vehicule.form.type:
+        class: BackOffice\RO\VehiculeBundle\Form\VehiculeType
+        arguments: [ @router ]
+        scope: request

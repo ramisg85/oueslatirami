@@ -1,0 +1,37 @@
+{% extends ":BackOffice:layout.html.twig" %}
+
+{#Surcharge du titre de la page #}
+{% block title %}Détail utilisateur{% endblock %}
+{% block body %}
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Nom</th>
+                <td>{{ entity.nomutilisateur }}</td>
+            </tr>
+            <tr>
+                <th>Prénom</th>
+                <td>{{ entity.prenomutilisateur }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ entity.emailutilisateur }}</td>
+            </tr>
+            <tr>
+                <th>Agence</th>
+                <td>{{ entity.agence.nomAgence }}</td>
+            </tr>
+            <tr>
+                <th>Login</th>
+                <td>{{ entity.loginutilisateur }}</td>
+            </tr>
+            <tr>
+                <th>Date de naissance</th>
+                <td>{{ entity.dtnaissanceutilisateur|date('d/m/Y') }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="col-sm-3">{{ include(':BackOffice:buttom.html.twig', {nomButtom : 'Retour listing utilisateur', routeButtom : path('ro_utilisateur_homepage'), glyphicon : 'glyphicon glyphicon-arrow-left'}) }}</div>
+    <div class="col-sm-3">{{ include(':BackOffice:buttom.html.twig', {nomButtom : 'Modifier infos utilisateur', routeButtom : path('ro_utilisateur_edit', { 'id': entity.id }), glyphicon : 'glyphicon glyphicon-pencil'}) }}</div>
+    <div class="col-sm-3">{{ include(':BackOffice:buttom.html.twig', {nomButtom : 'Supprimer utilisateur', routeButtom : path('ro_utilisateur_delete', { 'id': entity.id }), glyphicon : 'glyphicon glyphicon-remove'}) }}</div>
+{% endblock %}

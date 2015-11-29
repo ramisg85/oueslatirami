@@ -1,0 +1,40 @@
+﻿Debuger en affichant toutes les routes de l'application
+php app/console router:debug
+
+Debuger une route bien précise
+php app/console router:debug ens_job_show
+
+Impacter la base de données avec les modif faite sur le modéle
+php app/console doctrine:schema:update
+
+Pour debuger les variable de session dans twig
+{{ dump(app.session.flashbag) }}
+{%debug app.session.getFlashes()%}
+doctrine:generate:entity
+Pour debuger les variable de session dans le controlleur
+var_dump($this->get('session'));
+
+{% if app.request.attributes.get('_route') == 'ta_route' %}class="active"{% endif %}
+
+php app/console assetic:dump --env=dev
+
+# make a hard copy of the assets in web/
+php app/console assets:install
+
+# if possible, make absolute symlinks in web/ if not, make a hard copy
+php app/console assets:install --symlink
+
+# if possible, make relative symlinks in web/ if not, make a hard copy
+php app/console assets:install --symlink --relative
+
+Vider le cache
+php app/console cache:clear
+
+Vérifier la conf entity doctrine
+php app/console doctrine:schema:validate
+
+Pour installer des nouveau modules (bundles)
+Se mettre dans le repertoire : cd C:\xampp\htdocs\oueslatirami
+puis taper la commande suivante : php C:\xampp\htdocs\oueslatirami\composer.phar require vich/uploader-bundle:dev-master
+
+php app/console --version

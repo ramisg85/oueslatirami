@@ -1,0 +1,55 @@
+front_office_ro_front:
+    resource: "@ROFrontBundle/Resources/config/routing.yml"
+    prefix:   /
+
+reservation:
+    resource: "@ROReservationBundle/Resources/config/routing.yml"
+    prefix:   /
+
+facture:
+    resource: "@ROFactureBundle/Resources/config/routing.yml"
+    prefix:   /
+
+equipement:
+    resource: "@ROEquipementBundle/Resources/config/routing.yml"
+    prefix:   /
+
+contrat:
+    resource: "@ROContratBundle/Resources/config/routing.yml"
+    prefix:   /
+
+client:
+    resource: "@ROClientBundle/Resources/config/routing.yml"
+    prefix:   /
+
+entreprise:
+    resource: "@ROEntrepriseBundle/Resources/config/routing.yml"
+    prefix:   /
+
+categorie:
+    resource: "@ROCategorieBundle/Resources/config/routing.yml"
+    prefix:   /
+
+marque:
+    resource: "@ROMarqueBundle/Resources/config/routing.yml"
+    prefix:   /
+
+modele:
+    resource: "@ROModeleBundle/Resources/config/routing.yml"
+    prefix:   /
+
+ro_vehicule:
+    resource: "@ROVehiculeBundle/Resources/config/routing.yml"
+    prefix:   /
+
+ro_agence:
+    resource: "@ROAgenceBundle/Resources/config/routing.yml"
+    prefix:   /
+
+ro_utilisateur:
+    resource: "@ROUtilisateurBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: @AppBundle/Controller/
+    type:     annotation

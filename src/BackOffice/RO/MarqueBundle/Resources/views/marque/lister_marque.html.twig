@@ -1,0 +1,91 @@
+{% extends 'APYDataGridBundle::blocks.html.twig' %}
+
+{#Surcharge du titre de la page #}
+{% block title %}Liste des marques{% endblock %}
+
+{#Surcharge du corps de la page #}
+{% block body %}
+    {#Surcharge du bouton ajouter #}
+    {{ include(':BackOffice:buttom.html.twig', {nomButtom : 'Ajouter une marque', routeButtom : path('ro_marque_add'), glyphicon : 'glyphicon glyphicon-plus', align : 'right'}) }}
+    {{ include(':BackOffice:flach_message.html.twig') }}
+    {% block content %}
+        {{ grid(grid, _self) }}
+    {% endblock content %}
+{% endblock %}
+
+
+{# --------------------------------------------------- grid_no_data ------------------------------------------------- #}
+{% block grid_no_data %}<p class="alert alert-info">{{ grid.noDataMessage|default('No data')|trans|raw }}</p>{% endblock grid_no_data %}
+
+{# --------------------------------------------------- grid_no_result ------------------------------------------------- #}
+{% block grid_no_result %}
+    {% spaceless %}
+        {% set nbColumns = 0 %}
+        {% for column in grid.columns %}
+            {% if column.visible(grid.isReadyForExport) %}
+                {% set nbColumns = nbColumns + 1 %}
+            {% endif %}
+        {% endfor %}
+        <tr class="grid-row-cells">
+            <td class="last-column last-row" colspan="{{ nbColumns }}" style="text-align: center;"><div class="alert alert-info">{{ grid.noResultMessage|default('No result')|trans|raw }}</div></td>
+        </tr>
+    {% endspaceless %}
+{% endblock grid_no_result %}
+
+{# --------------------------------------------------- grid_exports ------------------------------------------------- #}
+{% block grid_exports %}
+    <div class=".col-xs-6 .col-lg-4" style="float:right">
+        {% spaceless %}
+            {{ 'Export'|trans }}
+            <select class="form-control" name="{{grid.hash}}[{{ constant('APY\\DataGridBundle\\Grid\\Grid::REQUEST_QUERY_EXPORT') }}]">
+                <option value="-1"></option>
+                {% for key, export in grid.exports %}
+                    <option value="{{key}}">{{ export.title|trans }}</option>
+                {% endfor %}
+            </select>
+
+            <button class="btn btn-default btn-sm" type="submit" >
+                <i class="glyphicon glyphicon-file"></i>
+                {{ 'Export'|trans }}
+            </button>
+        {% endspaceless %}
+    </div>
+{% endblock grid_exports %}
+
+
+{# ---------------------------------------------------- grid_pager -------------------------------------------------- #}
+{% block grid_pager %}
+    {% if pagerfanta %}
+        <div class=".col-xs-12 .col-md-8" >
+            {{ grid_pagerfanta(grid, _self) }}
+        </div>
+    {% else %}
+        <div class="pager" style="float:left">
+            {{ grid_pager_totalcount(grid, _self) }}
+            {{ grid_pager_selectpage(grid, _self) }}
+            {{ grid_pager_results_perpage(grid, _self) }}
+        </div>
+    {% endif %}
+{% endblock grid_pager %}
+
+
+{# -------------------------------------------------- grid_search -------------------------------------------------- #}
+{% block grid_search %}
+    {% if grid.isFilterSectionVisible %}
+        <div class="grid-search">
+            <form id="{{ grid.hash }}_search" action="{{ grid.routeUrl }}" method="post">
+                {% for column in grid.columns %}
+                    {% if column.isFilterable and column.type not in ['actions', 'massaction'] %}
+                        {% if column.usePrefixTitle == true %}
+                            {% set columnTitle = grid.prefixTitle ~ column.title %}
+                        {% else %}
+                            {% set columnTitle = column.title %}
+                        {% endif %}
+                        <div class="{{ cycle(['odd', 'even'], loop.index) }}"><label>{{ columnTitle|trans }}</label>{{ grid_filter(column, grid, false)|raw }}</div>
+                            {% endif %}
+                        {% endfor %}
+                <div class="grid-search-action"><input type="submit" class="grid-search-submit" value="{{ 'Search'|trans }}"/><input type="button" class="grid-search-reset" value="{{ 'Reset'|trans }}" onclick="return {{ grid.hash }}_reset();"/></div>
+            </form>
+        </div>
+    {% endif %}
+{% endblock grid_search %}

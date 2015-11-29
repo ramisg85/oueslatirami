@@ -1,0 +1,30 @@
+{% extends ":BackOffice:layout.html.twig" %}
+
+{#Surcharge du titre de la page #}
+{% block title %}Détail marque{% endblock %}
+{% block body %}
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Nom</th>
+                <td>{{ entity.nomMarque }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ entity.descMarque }}</td>
+            </tr>
+            <tr>
+                <th valign="top">Liste des modéles</th>
+                <td>
+                {% for item in entity.modeles %}
+                    - {{ item.denominationModele }}
+                    <br />
+                {% endfor %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="col-sm-3">{{ include(':BackOffice:buttom.html.twig', {nomButtom : 'Retour listing marque', routeButtom : path('ro_marque_homepage'), glyphicon : 'glyphicon glyphicon-arrow-left'}) }}</div>
+    <div class="col-sm-3">{{ include(':BackOffice:buttom.html.twig', {nomButtom : 'Modifier infos marque', routeButtom : path('ro_marque_edit', { 'id': entity.id }), glyphicon : 'glyphicon glyphicon-pencil'}) }}</div>
+    <div class="col-sm-3">{{ include(':BackOffice:buttom.html.twig', {nomButtom : 'Supprimer marque', routeButtom : path('ro_marque_delete', { 'id': entity.id }), glyphicon : 'glyphicon glyphicon-remove'}) }}</div>
+{% endblock %}

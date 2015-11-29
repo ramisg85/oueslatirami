@@ -1,0 +1,25 @@
+ro_client_homepage:
+    path:     /{_locale}/admin/lister_client
+    defaults: { _controller: ROClientBundle:client:lister_client }
+
+ro_client_add:
+    path:     /{_locale}/admin/add_client
+    defaults: { _controller: ROClientBundle:client:add_client }
+
+ro_client_edit:
+    path:     /{_locale}/admin/edit_client/{id}
+    defaults: { _controller: ROClientBundle:client:edit_client }
+    requirements:
+        id: \d+
+
+ro_client_delete:
+    path:     /{_locale}/admin/delete_client/{id}
+    defaults: { _controller: ROClientBundle:client:delete_client }
+    requirements:
+        id: \d+
+
+ro_client_detail:
+    path:     /{_locale}/admin/detail_client/{id}
+    defaults: { _controller: ROClientBundle:client:detail_client }
+    requirements:
+        id: \d+

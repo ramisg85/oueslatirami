@@ -1,0 +1,35 @@
+utilisateur_connexion:
+    path:     /connexion_utilisateur
+    defaults: { _controller: ROUtilisateurBundle:utilisateur:connexion_utilisateur }
+
+utilisateur_connexion_check:
+    pattern:   /connexion_utilisateur_check
+
+utilisateur_deconnexion:
+    path:     /deconnexion_utilisateur
+    
+ro_utilisateur_homepage:
+    path:     /{_locale}/admin/lister_utilisateur
+    defaults: { _controller: ROUtilisateurBundle:utilisateur:lister_utilisateur }
+
+ro_utilisateur_add:
+    path:     /{_locale}/admin/add_utilisateur
+    defaults: { _controller: ROUtilisateurBundle:utilisateur:add_utilisateur }
+
+ro_utilisateur_edit:
+    path:     /{_locale}/admin/edit_utilisateur/{id}
+    defaults: { _controller: ROUtilisateurBundle:utilisateur:edit_utilisateur }
+    requirements:
+        id: \d+
+
+ro_utilisateur_delete:
+    path:     /{_locale}/admin/delete_utilisateur/{id}
+    defaults: { _controller: ROUtilisateurBundle:utilisateur:delete_utilisateur }
+    requirements:
+        id: \d+
+
+ro_utilisateur_detail:
+    path:     /{_locale}/admin/detail_utilisateur/{id}
+    defaults: { _controller: ROUtilisateurBundle:utilisateur:detail_utilisateur }
+    requirements:
+        id: \d+

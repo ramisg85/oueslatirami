@@ -1,0 +1,8 @@
+{# empty Twig template #}
+{% for type, messages in app.session.flashbag.all() %}
+    {% for key, message in messages %}
+        <div class="alert alert-{{ type }}">
+            {{ message|trans }}
+        </div>
+    {% endfor %}
+{% endfor %}

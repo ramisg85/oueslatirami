@@ -1,0 +1,15 @@
+{% extends ":BackOffice:layout.html.twig" %}
+
+{#Surcharge du titre de la page #}
+{% block title %}Ajouter un véhicule{% endblock %}
+
+{% block body %}
+    <br />
+    {{ form_errors(form, { 'global_errors': true }) }}
+    {{ form_start(form, { 'style': 'horizontal' }) }}
+    {{ form_rest(form) }}
+    {{ form_end(form) }}
+{% endblock %}
+
+{#Surcharge du titre de la page #}
+{% block javascript %}<script src="{{ asset('backoffice/rovehicule/js/vehicule.js') }}"></script>{% endblock %}

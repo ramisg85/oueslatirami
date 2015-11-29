@@ -1,0 +1,25 @@
+ro_contrat_homepage:
+    path:     /{_locale}/admin/lister_contrat
+    defaults: { _controller: ROContratBundle:contrat:lister_contrat }
+
+ro_contrat_add:
+    path:     /{_locale}/admin/add_contrat
+    defaults: { _controller: ROContratBundle:contrat:add_contrat }
+
+ro_contrat_edit:
+    path:     /{_locale}/admin/edit_contrat/{id}
+    defaults: { _controller: ROContratBundle:contrat:edit_contrat }
+    requirements:
+        id: \d+
+
+ro_contrat_delete:
+    path:     /{_locale}/admin/delete_contrat/{id}
+    defaults: { _controller: ROContratBundle:contrat:delete_contrat }
+    requirements:
+        id: \d+
+
+ro_contrat_detail:
+    path:     /{_locale}/admin/detail_contrat/{id}
+    defaults: { _controller: ROContratBundle:contrat:detail_contrat }
+    requirements:
+        id: \d+

@@ -1,0 +1,54 @@
+{% extends ":BackOffice:layout.html.twig" %}
+
+{#Surcharge du titre de la page #}
+{% block title %}Détail agence{% endblock %}
+
+{% block body %}
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Nom agence</th>
+                <td>{{ entity.nomAgence }}</td>
+            </tr>
+            <tr>
+                <th>Adresse agencel1</th>
+                <td>{{ entity.adresseAgenceL1 }}</td>
+            </tr>
+            <tr>
+                <th>Adresse agencel2</th>
+                <td>{{ entity.adresseAgenceL2 }}</td>
+            </tr>
+            <tr>
+                <th>Cp agence</th>
+                <td>{{ entity.cpAgence }}</td>
+            </tr>
+            <tr>
+                <th>Ville agence</th>
+                <td>{{ entity.villeAgence }}</td>
+            </tr>
+            <tr>
+                <th>Pays agence</th>
+                <td>{{ entity.paysAgence }}</td>
+            </tr>
+            <tr>
+                <th>Logo agence</th>
+                <td>{{ entity.logoAgence }}</td>
+            </tr>
+            <tr>
+                <th>Date d'expiration</th>
+                <td>{{ entity.expireAt|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Crée le</th>
+                <td>{{ entity.createdAt|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Derniére MAJ</th>
+                <td>{{ entity.updatedAt|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="col-sm-3">{{ include(':BackOffice:buttom.html.twig', {nomButtom : 'Retour listing agence', routeButtom : path('ro_agence_homepage'), glyphicon : 'glyphicon glyphicon-arrow-left'}) }}</div>
+    <div class="col-sm-3">{{ include(':BackOffice:buttom.html.twig', {nomButtom : 'Modifier infos agence', routeButtom : path('ro_agence_edit', { 'id': entity.id }), glyphicon : 'glyphicon glyphicon-pencil'}) }}</div>
+    <div class="col-sm-3">{{ include(':BackOffice:buttom.html.twig', {nomButtom : 'Supprimer agence', routeButtom : path('ro_agence_delete', { 'id': entity.id }), glyphicon : 'glyphicon glyphicon-remove'}) }}</div>
+{% endblock %}
