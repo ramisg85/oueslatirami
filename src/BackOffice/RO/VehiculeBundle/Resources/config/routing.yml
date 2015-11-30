@@ -29,3 +29,5 @@ ro_vehicule_remplir_modele:
     defaults: { _controller: ROVehiculeBundle:vehicule:remplir_modele }
     options:
         expose: true
+    #requirements:
+    #methods: POST

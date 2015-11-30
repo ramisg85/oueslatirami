@@ -32,7 +32,7 @@ class VehiculeType extends AbstractType {
                     'property' => 'nomMarque',
                     'required' => true,
                     'empty_data' => 'Séléctionner une marque',
-                    'attr' => array('class' => 'ucfirst', 'onChange' => 'chargerModele($(this).val()),$url')))
+                    'attr' => array('class' => 'ucfirst', 'onChange' => 'chargerModele($(this))')))
                 ->add('modele', 'choice', array('choices' => array('Séléctionner une marque d\'abord')))
                 ->add('categorie', 'entity', array(
                     'label' => 'Categorie',

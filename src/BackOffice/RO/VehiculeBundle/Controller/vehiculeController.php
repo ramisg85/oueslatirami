@@ -14,6 +14,7 @@ use BackOffice\RO\VehiculeBundle\Form\VehiculeType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Response;
 
 class vehiculeController extends Controller {
 
@@ -151,11 +152,17 @@ class vehiculeController extends Controller {
     }
 
     public function remplir_modeleAction() {
+
+        $modeleRepository = $this->getDoctrine()
+                ->getManager()
+                ->getRepository('ROModeleBundle:Modele');
+        $modele = $modeleRepository->findBy(
+                array('marque' => 1)
+        );
         // pour vérifier la présence d'une requete Ajax
-        if ($request->isXmlHttpRequest()) {
-            return new Response('Hello');
-        }
-        return new Response('Erreur');
+        //print_r($modele);
+        //Doctrine\Common\Util\Debug::dump($modele);
+        return new Response('Hello');
     }
 
 }

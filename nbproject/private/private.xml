@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/xampp/htdocs/oueslatirami/src/BackOffice/RO/ModeleBundle/Entity/modele.php</file>
             <file>file:/C:/xampp/htdocs/oueslatirami/src/BackOffice/RO/VehiculeBundle/Controller/vehiculeController.php</file>
-            <file>file:/C:/xampp/htdocs/oueslatirami/src/BackOffice/RO/VehiculeBundle/Resources/config/services.yml</file>
             <file>file:/C:/xampp/htdocs/oueslatirami/src/BackOffice/RO/VehiculeBundle/Resources/config/routing.yml</file>
-            <file>file:/C:/xampp/htdocs/oueslatirami/src/BackOffice/RO/VehiculeBundle/Form/VehiculeType.php</file>
+            <file>file:/C:/xampp/htdocs/oueslatirami/src/BackOffice/RO/UtilisateurBundle/Controller/utilisateurController.php</file>
+            <file>file:/C:/xampp/htdocs/oueslatirami/src/BackOffice/RO/ModeleBundle/Entity/modeleRepository.php</file>
             <file>file:/C:/xampp/htdocs/oueslatirami/web/backoffice/rovehicule/js/vehicule.js</file>
         </group>
     </open-files>
