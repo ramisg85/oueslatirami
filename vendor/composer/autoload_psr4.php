@@ -16,6 +16,7 @@ return array(
     'Knp\\Bundle\\MenuBundle\\' => array($vendorDir . '/knplabs/knp-menu-bundle'),
     'Knp\\Bundle\\GaufretteBundle\\' => array($vendorDir . '/knplabs/knp-gaufrette-bundle'),
     'FOS\\JsRoutingBundle\\' => array($vendorDir . '/friendsofsymfony/jsrouting-bundle'),
+    'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),
     'Doctrine\\Bundle\\DoctrineBundle\\' => array($vendorDir . '/doctrine/doctrine-bundle'),
     'APY\\DataGridBundle\\' => array($vendorDir . '/apy/datagrid-bundle'),
 );

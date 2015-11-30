@@ -159,10 +159,11 @@ class vehiculeController extends Controller {
         $modele = $modeleRepository->findBy(
                 array('marque' => 1)
         );
-        // pour vérifier la présence d'une requete Ajax
-        //print_r($modele);
-        //Doctrine\Common\Util\Debug::dump($modele);
-        return new Response('Hello');
+
+        $serializer = $this->get('jms_serializer');
+        $response = $serializer->serialize($modele, 'json');
+
+        return new Response($response);
     }
 
 }

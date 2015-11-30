@@ -21,6 +21,7 @@ class AppKernel extends Kernel {
             new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
             
             new BackOffice\RO\UtilisateurBundle\ROUtilisateurBundle(),
             new BackOffice\RO\AgenceBundle\ROAgenceBundle(),

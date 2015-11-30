@@ -34,7 +34,8 @@
         "knplabs/knp-paginator-bundle": "dev-master",
         "vich/uploader-bundle": "^0.14.0",
         "knplabs/knp-gaufrette-bundle": "dev-master",
-        "friendsofsymfony/jsrouting-bundle": "^1.5"
+        "friendsofsymfony/jsrouting-bundle": "^1.5",
+        "jms/serializer-bundle": "^1.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
