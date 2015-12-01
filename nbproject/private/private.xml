@@ -4,13 +4,8 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/oueslatirami/src/BackOffice/RO/ModeleBundle/Entity/modele.php</file>
-            <file>file:/C:/xampp/htdocs/oueslatirami/app/AppKernel.php</file>
             <file>file:/C:/xampp/htdocs/oueslatirami/src/BackOffice/RO/VehiculeBundle/Controller/vehiculeController.php</file>
-            <file>file:/C:/xampp/htdocs/oueslatirami/src/BackOffice/RO/VehiculeBundle/Resources/config/routing.yml</file>
             <file>file:/C:/xampp/htdocs/oueslatirami/src/BackOffice/RO/UtilisateurBundle/Controller/utilisateurController.php</file>
-            <file>file:/C:/xampp/htdocs/oueslatirami/commande%20symfony.txt</file>
-            <file>file:/C:/xampp/htdocs/oueslatirami/composer.json</file>
-            <file>file:/C:/xampp/htdocs/oueslatirami/src/BackOffice/RO/ModeleBundle/Entity/modeleRepository.php</file>
             <file>file:/C:/xampp/htdocs/oueslatirami/web/backoffice/rovehicule/js/vehicule.js</file>
         </group>
     </open-files>
