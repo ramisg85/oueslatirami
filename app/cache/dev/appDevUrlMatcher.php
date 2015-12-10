@@ -503,9 +503,15 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         // ro_vehicule_remplir_modele
-        if ($pathinfo === '/admin/remplir_modele') {
-            return array (  '_controller' => 'BackOffice\\RO\\VehiculeBundle\\Controller\\vehiculeController::remplir_modeleAction',  '_route' => 'ro_vehicule_remplir_modele',);
+        if (0 === strpos($pathinfo, '/admin/remplir_modele') && preg_match('#^/admin/remplir_modele/(?P<idMarque>[^/]++)$#s', $pathinfo, $matches)) {
+            if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                $allow = array_merge($allow, array('GET', 'HEAD'));
+                goto not_ro_vehicule_remplir_modele;
+            }
+
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'ro_vehicule_remplir_modele')), array (  '_controller' => 'BackOffice\\RO\\VehiculeBundle\\Controller\\vehiculeController::remplir_modeleAction',));
         }
+        not_ro_vehicule_remplir_modele:
 
         // ro_agence_homepage
         if (preg_match('#^/(?P<_locale>[^/]++)/admin/lister_agence$#s', $pathinfo, $matches)) {

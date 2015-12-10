@@ -154,6 +154,7 @@ class utilisateurController extends Controller {
                 }
             }
         }
+        
         return $this->render('ROUtilisateurBundle:utilisateur:add_utilisateur.html.twig', array(
                     'entity' => $utilisateur,
                     'form' => $form->createView()

@@ -32,6 +32,7 @@ class Vehicule {
      *
      * @ORM\Column(name="type_vehicule", type="string", length=250, nullable=false)
      * @GRID\Column(title="Type", size="255", type="text", operatorsVisible=false)
+     * @Assert\NotNull(message = "Le type véhicule est obligatoire")
      */
     protected $typeVehicule;
 
@@ -39,6 +40,8 @@ class Vehicule {
      * @var \DateTime
      *
      * @ORM\Column(name="date_mise_circulation_vehicule", type="date", nullable=false)
+     * @Assert\NotNull(message = "La date de premiére mise en circulation est obligatoire")
+     * @Assert\Date(message = "La date de premiére mise en circulation est invalide")
      */
     protected $dateMiseCirculationVehicule;
 
@@ -47,6 +50,7 @@ class Vehicule {
      *
      * @ORM\Column(name="num_immat_vehicule", type="string", length=250, nullable=false)
      * @GRID\Column(title="Immatriculation", size="255", type="text", operatorsVisible=false)
+     * @Assert\NotNull(message = "Le numéro d'immatriculation est obligatoire")
      */
     protected $numImmatVehicule;
 

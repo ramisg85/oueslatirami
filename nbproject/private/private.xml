@@ -5,7 +5,11 @@
         <group>
             <file>file:/C:/xampp/htdocs/oueslatirami/src/BackOffice/RO/ModeleBundle/Entity/modele.php</file>
             <file>file:/C:/xampp/htdocs/oueslatirami/src/BackOffice/RO/VehiculeBundle/Controller/vehiculeController.php</file>
+            <file>file:/C:/xampp/htdocs/oueslatirami/src/BackOffice/RO/VehiculeBundle/Entity/vehicule.php</file>
+            <file>file:/C:/xampp/htdocs/oueslatirami/src/BackOffice/RO/VehiculeBundle/Resources/config/routing.yml</file>
             <file>file:/C:/xampp/htdocs/oueslatirami/src/BackOffice/RO/UtilisateurBundle/Controller/utilisateurController.php</file>
+            <file>file:/C:/xampp/htdocs/oueslatirami/src/BackOffice/RO/UtilisateurBundle/Validator/utilisateurValidator.php</file>
+            <file>file:/C:/xampp/htdocs/oueslatirami/src/BackOffice/RO/UtilisateurBundle/Entity/utilisateur.php</file>
             <file>file:/C:/xampp/htdocs/oueslatirami/web/backoffice/rovehicule/js/vehicule.js</file>
         </group>
     </open-files>

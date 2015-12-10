@@ -87,14 +87,27 @@ class vehiculeController extends Controller {
         if ($request->getMethod() == 'POST') {
 
             if (null !== $request) {
-                $dataForm = $request->request->get('ro_vehicule_vehiculetype');
-
-                //Créationde l'vehicule
-                $form->handleRequest($request);
-
                 if ($form->isValid()) {
 
                     $dataForm = $request->request->get('backoffice_ro_vehiculebundle_vehicule');
+
+                    //Récupération de l'id marque
+                    $id_marque = $dataForm['marque'];
+                    //Récupération de l'objet marque en fonction de l'id retourné par le formulaire
+                    $marque = $em->getRepository('ROMarqueBundle:Marque')->findOneById($id_marque);
+                    $vehicule->setMarque($marque);
+
+                    //Récupération de l'id modele
+                    $id_modele = $dataForm['modele'];
+                    //Récupération de l'objet modele en fonction de l'id retourné par le formulaire
+                    $modele = $em->getRepository('ROModeleBundle:Modele')->findOneById($id_modele);
+                    $vehicule->setModele($modele);
+
+                    //Récupération de l'id agence
+                    $id_agence = $dataForm['agence'];
+                    //Récupération de l'objet agence en fonction de l'id retourné par le formulaire
+                    $agence = $em->getRepository('ROAgenceBundle:Agence')->findOneById($id_agence);
+                    $vehicule->setModele($agence);
 
                     //Persister l'vehicule
                     $em->persist($vehicule);
@@ -108,6 +121,7 @@ class vehiculeController extends Controller {
                 }
             }
         }
+        
         return $this->render('ROVehiculeBundle:vehicule:add_vehicule.html.twig', array(
                     'entity' => $vehicule,
                     'form' => $form->createView()
@@ -151,19 +165,23 @@ class vehiculeController extends Controller {
         return array('entity' => $entity);
     }
 
-    public function remplir_modeleAction() {
+    public function remplir_modeleAction($idMarque) {
+        $request = $this->getRequest();
+        if ($request->isXmlHttpRequest()) {
+            $modeleRepository = $this->getDoctrine()
+                    ->getManager()
+                    ->getRepository('ROModeleBundle:Modele');
+            $modele = $modeleRepository->findBy(
+                    array('marque' => $idMarque)
+            );
 
-        $modeleRepository = $this->getDoctrine()
-                ->getManager()
-                ->getRepository('ROModeleBundle:Modele');
-        $modele = $modeleRepository->findBy(
-                array('marque' => 1)
-        );
+            $serializer = $this->get('jms_serializer');
+            $response = $serializer->serialize($modele, 'json');
 
-        $serializer = $this->get('jms_serializer');
-        $response = $serializer->serialize($modele, 'json');
-
-        return new Response($response);
+            return new Response($response);
+        } else {
+            return new Response('Erreur de chargement de contenu');
+        }
     }
 
 }

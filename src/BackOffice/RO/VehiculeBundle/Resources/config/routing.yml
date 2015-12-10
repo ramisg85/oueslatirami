@@ -25,9 +25,10 @@ ro_vehicule_detail:
         id: \d+
         
 ro_vehicule_remplir_modele:
-    path:     /admin/remplir_modele
+    path:     /admin/remplir_modele/{idMarque}
     defaults: { _controller: ROVehiculeBundle:vehicule:remplir_modele }
     options:
         expose: true
-    #requirements:
-    #methods: POST
+    requirements:
+        id: \d+
+    methods: GET

@@ -5,34 +5,33 @@
  */
 function chargerModele(Marque)
 {
-    var url = Routing.generate('ro_vehicule_remplir_modele');
-    var idSelectMarque = Marque.attr('id');
-    var idSelectModele = 'ro_vehicule_vehiculetype_modele';
+    var idMarque = Marque.val();
+    var url = Routing.generate('ro_vehicule_remplir_modele')+'/'+idMarque;
+    var idSelectModele = '#ro_vehicule_vehiculetype_modele';
     //alert(idMarque);
 
-    $.ajax({type: "POST",
+    $.ajax({type: "GET",
         url: url,
-        data: {'idMarque': idMarque},
         dataType: 'JSON',
         timeout: 30000,
         success: function (data) {
             var modeles = data[0];
-           
+
             //réinitialise la liste des modeles
-            $(idSelectModele).html('<option value> -- Tous -- </option>');
-            
-             //met à jour la liste des modeles
-             $.each(data, function () {
-                 
-             var id = modeles.id;
-             var denomination = modeles.denomination_modele;
-             alert($(idSelectModele));
-             /*
-             $(idSelectModele).append('<option value="' + id + '">' + denomination + '</option>');*/
-             });
+            $(idSelectModele).html('<option value> -- Tous les modéles -- </option>');
+
+            //met à jour la liste des modeles
+            $.each(data, function () {
+
+                var id = modeles.id;
+                var denomination = modeles.denomination_modele;
+
+                $(idSelectModele).append('<option value="' + id + '">' + denomination + '</option>');
+            });
         },
         error: function () {
-            alert('Erreur, la connexion au serveur a été interrompue');
+            //réinitialise la liste des modeles
+            $(idSelectModele).html('<option value> -- Aucun modéle trouvé -- </option>');
         }
     });
 }
