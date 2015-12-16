@@ -2,6 +2,7 @@
 
 namespace BackOffice\RO\VehiculeBundle\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use APY\DataGridBundle\Grid\Mapping as GRID;
 
@@ -37,7 +38,6 @@ class Vehicule {
     protected $typeVehicule;
 
     /**
-     * @var \DateTime
      *
      * @ORM\Column(name="date_mise_circulation_vehicule", type="date", nullable=false)
      * @Assert\NotNull(message = "La date de premiére mise en circulation est obligatoire")
@@ -93,13 +93,12 @@ class Vehicule {
     protected $categorie;
 
     /**
-     * @var $agence
+     * @var Agence $agence
      *
-     * @ORM\ManyToOne(targetEntity="Agence")
+     * @ORM\ManyToOne(targetEntity="BackOffice\RO\AgenceBundle\Entity\Agence", inversedBy="vehicules", cascade={"persist", "merge"})
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_agence", referencedColumnName="id")
+     *  @ORM\JoinColumn(name="id_agence", referencedColumnName="id")
      * })
-     * @ORM\Column(name="id_agence", type="integer")
      */
     protected $agence;
 
@@ -169,14 +168,29 @@ class Vehicule {
         return $this->modele;
     }
 
+    /**
+     * Get marque
+     *
+     * @return integer 
+     */
     function getMarque() {
         return $this->marque;
     }
 
+    /**
+     * Get categorie
+     *
+     * @return integer 
+     */
     function getCategorie() {
         return $this->categorie;
     }
 
+    /**
+     * Get agence
+     *
+     * @return integer 
+     */
     function getAgence() {
         return $this->agence;
     }
@@ -193,7 +207,7 @@ class Vehicule {
         $this->typeVehicule = $typeVehicule;
     }
 
-    function setDateMiseCirculationVehicule(\DateTime $dateMiseCirculationVehicule) {
+    function setDateMiseCirculationVehicule( $dateMiseCirculationVehicule = '0000-00-00') {
         $this->dateMiseCirculationVehicule = $dateMiseCirculationVehicule;
     }
 
@@ -213,15 +227,15 @@ class Vehicule {
         $this->tarifJournalier = $tarifJournalier;
     }
 
-    function setModele(Modele $modele) {
+    function setModele($modele) {
         $this->modele = $modele;
     }
 
-    function setMarque(Marque $marque) {
+    function setMarque($marque) {
         $this->marque = $marque;
     }
 
-    function setCategorie(Categorie $categorie) {
+    function setCategorie($categorie) {
         $this->categorie = $categorie;
     }
 

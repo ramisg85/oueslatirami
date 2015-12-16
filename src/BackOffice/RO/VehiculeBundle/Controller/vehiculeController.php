@@ -78,50 +78,60 @@ class vehiculeController extends Controller {
     public function add_vehiculeAction() {
         $vehicule = new Vehicule();
 
+        $em = $this->getDoctrine()->getEntityManager();
+
         $form = $this->add_vehiculeForm($vehicule);
         $request = $this->getRequest();
 
-        $em = $this->getDoctrine()->getEntityManager();
+        $dataForm = $request->request->get('ro_vehicule_vehiculetype');
 
+        //Récupération de l'id marque
+        $id_marque = $dataForm['marque'];
+        //Récupération de l'objet marque en fonction de l'id retourné par le formulaire
+        $marque = $em->getRepository('ROMarqueBundle:Marque')->findOneById($id_marque);
+        $vehicule->setMarque($marque);
+
+        //Récupération de l'id modele
+        $id_modele = $dataForm['modele'];
+        //Récupération de l'objet modele en fonction de l'id retourné par le formulaire
+        $modele = $em->getRepository('ROModeleBundle:Modele')->findOneById($id_modele);
+        $vehicule->setModele($modele);
+
+        //Récupération de l'id agence
+        $id_agence = $dataForm['agence'];
+        //Récupération de l'objet agence en fonction de l'id retourné par le formulaire
+        $agence = $em->getRepository('ROAgenceBundle:Agence')->findOneById($id_agence);
+        $vehicule->setAgence($agence);
+
+        //Récupération des autre champs véhicule
+        $numImmatVehicule = $dataForm['numImmatVehicule'];
+        $typeVehicule = $dataForm['typeVehicule'];
+        $dateMiseCirculationVehicule = $dataForm['dateMiseCirculationVehicule'];
+        $tarifJournalier = $dataForm['tarifJournalier'];
+        
+        $vehicule->setNumImmatVehicule($numImmatVehicule);
+        $vehicule->setTypeVehicule($typeVehicule);
+        $vehicule->setDateMiseCirculationVehicule($dateMiseCirculationVehicule);
+        $vehicule->setTarifJournalier($tarifJournalier);
+        
         //Vérifier si le formulaire a bien été submité
         if ($request->getMethod() == 'POST') {
 
             if (null !== $request) {
-                if ($form->isValid()) {
+                //if ($form->isValid()) {
+                //Persister l'vehicule
+                $em->persist($vehicule);
+                $em->flush();
 
-                    $dataForm = $request->request->get('backoffice_ro_vehiculebundle_vehicule');
+                //Création du flasMessage suite au succés de l'ajout d'un vehicule
+                $session = $this->get('session');
+                $session->getFlashBag()->add('info', 'Ajout véhicule effectuée avec succées !');
 
-                    //Récupération de l'id marque
-                    $id_marque = $dataForm['marque'];
-                    //Récupération de l'objet marque en fonction de l'id retourné par le formulaire
-                    $marque = $em->getRepository('ROMarqueBundle:Marque')->findOneById($id_marque);
-                    $vehicule->setMarque($marque);
-
-                    //Récupération de l'id modele
-                    $id_modele = $dataForm['modele'];
-                    //Récupération de l'objet modele en fonction de l'id retourné par le formulaire
-                    $modele = $em->getRepository('ROModeleBundle:Modele')->findOneById($id_modele);
-                    $vehicule->setModele($modele);
-
-                    //Récupération de l'id agence
-                    $id_agence = $dataForm['agence'];
-                    //Récupération de l'objet agence en fonction de l'id retourné par le formulaire
-                    $agence = $em->getRepository('ROAgenceBundle:Agence')->findOneById($id_agence);
-                    $vehicule->setModele($agence);
-
-                    //Persister l'vehicule
-                    $em->persist($vehicule);
-                    $em->flush();
-
-                    //Création du flasMessage suite au succés de l'ajout d'un vehicule
-                    $session = $this->get('session');
-                    $session->getFlashBag()->add('info', 'Ajout véhicule effectuée avec succées !');
-
-                    return $this->redirect($this->generateUrl('ro_vehicule_homepage'));
-                }
+                return $this->redirect($this->generateUrl('ro_vehicule_homepage'));
+                //}
             }
         }
-        
+
         return $this->render('ROVehiculeBundle:vehicule:add_vehicule.html.twig', array(
                     'entity' => $vehicule,
                     'form' => $form->createView()

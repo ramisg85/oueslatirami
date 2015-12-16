@@ -25,7 +25,7 @@ class VehiculeType extends AbstractType {
         $builder
                 ->add('numImmatVehicule', 'text', array('label' => 'Immatriculation', 'max_length' => 75))
                 ->add('typeVehicule', 'text', array('label' => 'Type', 'max_length' => 75))
-                ->add('dateMiseCirculationVehicule', 'birthday', array('widget' => 'single_text', 'label' => 'Date mise en circulation', 'format' => 'dd/MM/yyyy', 'attr' => array('class' => 'datepicker', 'data-date-format' => 'dd/mm/yyyy')))
+                ->add('dateMiseCirculationVehicule', 'birthday', array('widget' => 'single_text', 'label' => 'Date mise en circulation','placeholder' => array('year' => 'Year', 'month' => 'Month', 'day' => 'Day'), 'format' => 'dd/MM/yyyy', 'attr' => array('class' => 'datepicker', 'data-date-format' => 'dd/mm/yyyy')))
                 ->add('marque', 'entity', array(
                     'label' => 'Marque',
                     'class' => 'BackOffice\RO\MarqueBundle\Entity\Marque',

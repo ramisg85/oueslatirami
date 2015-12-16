@@ -80,6 +80,13 @@ class Agence {
     protected $utilisateurs;
 
     /**
+     * @var ArrayCollection $vehicules
+     * 
+     * @ORM\OneToMany(targetEntity="BackOffice\RO\VehiculeBundle\Entity\Vehicule", mappedBy="agence", cascade={"persist", "remove", "merge"})
+     */
+    protected $vehicules;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="logo_agence", type="string", length=500, nullable=false)
